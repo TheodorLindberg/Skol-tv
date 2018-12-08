@@ -44,7 +44,7 @@ $layout = new LayoutData;
         <h1>Skapa Layout</h1>
         <button id="create-new-view-button" onclick="document.getElementById('create-layout-popup').style.display='block'">Skapa en layout</button>
         <div class="popup" id="create-layout-popup">    
-        <div class="popup-content popup-animate" id="popup-create-layout" >
+         <div class="popup-content popup-animate" >
             <div class="popup-topSection">
                 <span onclick="document.getElementById('create-layout-popup').style.display='none'" class="popup-close" title="Close Modal">&times;</span>
             </div>

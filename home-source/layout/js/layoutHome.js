@@ -29,7 +29,6 @@ function save() {
             "ajax": true,
             "name": $("#create-layout-name").val(),
             "description": $("#create-layout-description").val(),
-
         },
         success: function(responseText) {
             console.log(responseText);

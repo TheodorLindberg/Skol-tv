@@ -157,6 +157,7 @@ class LayoutData
     }
     public function deleteLayoutWithName($name)
     {
+        $this->mysqli->query();
         $this->mysqli->query("DELETE FROM layouts WHERE name = ?", [$name]);
         return true;
     }
