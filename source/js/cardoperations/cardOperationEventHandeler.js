@@ -2,24 +2,10 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
     var name = event.target.parentElement.parentElement.parentElement.getElementsByClassName("current-cards-name")[0].innerHTML;
 
     if (event.target.matches(".button-information")) {
-        $.ajax({
-            method: "POST",
-            url: cardDataFile,
-            data: {
-                "dir": "printcardinformation",
-                "ajax": true,
-                "name": name
-            },
-            success: function(responseText) {
-                console.log(responseText);
-                showCardInformationPopup(name, popupContainer);
-            },
-            error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
-        });
-
+        showCardInformationPopup(name, popupContainer);
         console.log("Show information");
     } else if (event.target.matches(".button-edit")) {
-        location.assign("edit/index.php?card=" + name);
+        location.assign("edit/edit.php?e=" + name);
     } else if (event.target.matches(".button-remove")) {
         event.target.parentElement.parentElement.parentElement.remove();
         $.ajax({
@@ -30,9 +16,7 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
                 "ajax": true,
                 "name": name,
             },
-            success: function(responseText) {
-                console.log(responseText);
-            },
+            success: function(responseText) {},
             error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
         });
 
@@ -62,6 +46,7 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
             data: {
                 "dir": "vote",
                 "power": 1,
+                "ajax": true,
                 "name": name,
             },
             success: function(responseText) {
@@ -73,9 +58,7 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
                         "ajax": true,
                     },
                     success: function(responseText) {
-                        console.log("tresponse");
-
-                        document.getElementsByClassName("cards-cardlist")[0].innerHTML = responseText;
+                        listContainer.innerHTML = responseText;
 
                     },
                     error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },

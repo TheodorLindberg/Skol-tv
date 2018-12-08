@@ -107,7 +107,7 @@ $("#save-button").click(function(event) {
                 },
                 success: function(responseText) {
                     console.log("tresponse");
-                    document.getElementsByClassName("cards")[0].innerHTML = '<h1 class="cards-header">Nuvarande cards</h1>' + responseText;
+                    document.getElementsByClassName("cards-cardlist")[0].innerHTML = responseText;
                 },
                 error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
 
@@ -125,7 +125,7 @@ function showElement(element, show) {
         element.style.display = "none";
     }
 }
-document.getElementsByClassName("basic-information")[0].addEventListener('click', function(event) {
+document.getElementsByClassName("create-card-information")[0].addEventListener('click', function(event) {
 
     if (event.target == Checkhtml) {
         showElement(html, event.target.checked);
@@ -144,14 +144,15 @@ document.getElementsByClassName("basic-information")[0].addEventListener('click'
 
 });
 
-document.getElementsByClassName("files-informations-header")[0].addEventListener("click", function(event) {
+document.getElementsByClassName("create-card-files-informations-header")[0].addEventListener("click", function(event) {
 
     var index = event.target.getAttribute("editor-index");
 
+    textEditor.style.display = "block";
 
     if (index != null) {
-        textEditor.style.display = "block";
         if (markedFile != -1) {
+            textEditor.style.display = "block";
             values[markedFile] = textEditor.value;
         }
         console.log(markedFile);
@@ -183,9 +184,7 @@ document.getElementsByClassName("files-informations-header")[0].addEventListener
         event.target.style.borderColor = "red";
 
         markedFile = index;
-
         textEditor.value = values[index];
-
     }
 
 });

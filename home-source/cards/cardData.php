@@ -127,15 +127,15 @@ class CardData
         if(!$arr) // Nothing with the same name found 
         {
             $insert = $this->mysqli->query("INSERT INTO cards(name,description,creatorID, lastedit, created, upvote, folder_path) 
-            VALUES(?, ?, ?, ?, ?, 0,?)", [$name, $description, $uid, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), "source/cards/".$name]);
+            VALUES(?, ?, ?, ?, ?, 0,?)", [$name, $description, $uid, date("Y-m-d H:i:s"), date("Y-m-d H:i:s"), "storage/cards/".$name]);
             
             //if(!$insert['Warnings'] != 0) {return $insert;}
-            mkdir("../../../source/cards/".$name);
+            mkdir("../../storage/cards/".$name);
             if($fileTypes)
             {
                 for($index = 0; $index < count($fileTypes); $index++)
                 {
-                 $this->assignFileToCard($name, "../../../source/cards/".$name,$filesValues[$index],$fileTypes[$index] );
+                    $this->assignFileToCard($name, "../../storage/cards/".$name,$filesValues[$index],$fileTypes[$index] );
                 }
             }
 
@@ -160,11 +160,19 @@ class CardData
     }
     public function deleteCardWithId($id)
     {
+
+        $path = $this->mysqli->query("SELECT folder_path FROM cards WHERE id = ?", [$id])->fetch("col");
         $this->mysqli->query("DELETE FROM cards WHERE id = ?", [$id]);
+        $this->recursiveRemove("../../".$path);
+        echo $path;
+
     }
     public function deleteCardWithName($name)
     {
+        $path = $this->mysqli->query("SELECT folder_path FROM cards WHERE name = ?", [$name])->fetch("col");
         $this->mysqli->query("DELETE FROM cards WHERE name = ?", [$name]);
+        $this->recursiveRemove("../../".$path);
+        echo $path;
         return true;
     }
     public function voteForCard($votingPower, $name)
@@ -178,8 +186,8 @@ class CardData
     {
         $this->mysqli->query("DELETE FROM cards");
     
-        $this->recursiveRemove("../../../source/cards/");
-        mkdir("../../../source/cards/");
+        $this->recursiveRemove("../../storage/cards/");
+        mkdir("../../storage/cards/");
         return true;
     
     }
@@ -231,6 +239,7 @@ if(isset($_POST['dir'])){
             $state = $card->printCardInformation($_POST['name']);
             break;
         case "vote":
+        echo "hello";
             $state = $card->voteForCard($_POST['power'],$_POST['name']);
             break;
         case "delete":

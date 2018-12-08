@@ -94,7 +94,7 @@ $card = new CardData();
                             <button  editor-index="2" id="editor-php">Php</button>
                             <button editor-index="3"  id="editor-database">Mysqli</button>
                         </ul>
-                        <textarea style="display:none; margin: 8px;" name="" id="text-editor" cols="70"></textarea>
+                        <textarea style="display:none; margin: 8px;" id="text-editor" cols="70"></textarea>
                         <button id="run-sql-code" style="display:none !important;">Run sql code</button>
                     </div>
                 </div>
@@ -116,6 +116,7 @@ $card = new CardData();
 </div>
 </body>
 <script src="../../source/external/jquery-3.3.1.min.js"></script>
+<script src="../../home-source/cards/js/createCard.js"></script>
 <script src="../../source/js/cardoperations/basicCardOperations.js"></script>
 <script src="../../source/js/cardoperations/cardOperationEventHandeler.js"></script>
 <script src="../../home-source/cards/js/currentCardsController.js"></script>

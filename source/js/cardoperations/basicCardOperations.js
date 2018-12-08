@@ -20,7 +20,6 @@ function showCardInformationPopup(cardName, element) {
                 '<div class="popup-container" style="background-color:lightgrey;">' +
                 '<button type="button" onclick="this.parentElement.parentElement.parentElement.style.display=' + "'" + 'none' + "'" + ';" class="popup-cancelbtn">Cancel</button>' +
                 '</div></div></div></div>';
-            console.log(responseText);
             element.innerHTML = before + responseText + after;
             element.firstChild.style.display = "block";
         },
