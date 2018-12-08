@@ -18,7 +18,6 @@ if(isset($_SESSION['u_id'])){
 </head>
 
 <body>
-<p>heööp</p>
     <ul class="navbar" role="navigation">
         <li class="nav nav-skoltv">
             <h1>Skol TV</h1>
