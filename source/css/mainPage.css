@@ -1,0 +1,164 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-image: url("../img/mainPageBackground.jpg");
+    background-position: 40% 20%;
+    background-size: 200%;
+}
+
+.navbar {
+    padding: 0;
+    display: flex;
+    list-style: none;
+    flex-direction: row;
+    align-items: center;
+    background-color: rgba(0, 153, 255, 0.2);
+}
+
+.navbar li {
+    cursor: pointer;
+}
+
+.nav-skoltv {
+    padding: 10px;
+    color: rgba(0, 153, 255, 0.9);
+    margin-left: 20px;
+}
+
+.nav-login {
+    margin-right: 10px;
+    background-color: rgba(0, 153, 255, 0.1);
+    border-color: rgba(0, 153, 255, 0.4);
+    border-style: solid;
+    border-radius: 5px;
+    color: rgba(0, 153, 255, 1);
+    padding: 4px;
+    outline: none;
+}
+
+#error-message {
+    position: absolute;
+    right: 40px;
+    display: none;
+    margin: 0 auto;
+    color: rgba(0, 153, 255, 1);
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.fadeout {
+    -webkit-animation: fadein 6s;
+    /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 6s;
+    /* Firefox < 16 */
+    -ms-animation: fadein 6s;
+    /* Internet Explorer */
+    -o-animation: fadein 6s;
+    /* Opera < 12.1 */
+    animation: fadein 6s;
+}
+
+@keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* Firefox < 16 */
+
+@-moz-keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* Safari, Chrome and Opera > 12.1 */
+
+@-webkit-keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* Internet Explorer */
+
+@-ms-keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+
+/* Opera < 12.1 */
+
+@-o-keyframes fadein {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+input:-webkit-autofill {
+    -webkit-animation-name: autofill;
+    -webkit-animation-fill-mode: both;
+}
+
+@-webkit-keyframes autofill {
+    to {
+        color: rgba(0, 153, 255, 1);
+        background-color: rgba(0, 153, 255, 0.1);
+    }
+}
+
+::placeholder {
+    color: rgba(0, 153, 255, 0.6);
+}
+
+.divider {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#main-content {
+    margin: 0 auto;
+    width: fit-content;
+    padding: 10px;
+    margin-top: 20%;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgba(0, 153, 255, 0.1);
+    border-radius: 10px;
+}
+
+#maintext {
+    text-align: center;
+    font-size: 40px;
+    width: 100%;
+    color: rgba(0, 153, 255, 0.8);
+}
+
+#maintext-fotter {
+    text-align: center;
+    font-size: 25px;
+    width: 100%;
+    color: rgba(0, 173, 255, 0.7);
+}

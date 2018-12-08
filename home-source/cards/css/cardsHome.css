@@ -1,0 +1,20 @@
+body {
+    background-image: url("../background.jpg");
+    background-position: 50% 50%;
+    background-size: 100%;
+}
+
+.cardsHome {
+    display: flex;
+}
+
+.card {
+    margin-top: 30px;
+    width: 100%;
+    /* The display:flex will align the cards nicly*/
+}
+
+.cards-header {
+    color: rgba(0, 153, 255, 1);
+    font-size: 25px;
+}
