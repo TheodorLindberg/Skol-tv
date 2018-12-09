@@ -34,8 +34,7 @@ function handleCardClickEvent(event, listContainer, activateContainer, popupCont
         showLayoutInformationPopup(name, popupContainer);
         console.log("Show information");
     } else if (event.target.matches(".button-edit")) {
-        //location.assign("edit/edit.php?e=" + name);
-        alert("Not implemented");
+        location.assign("edit/editlayout.php?e=" + name);
     } else if (event.target.matches(".button-remove")) {
         event.target.parentElement.parentElement.parentElement.remove();
         $.ajax({

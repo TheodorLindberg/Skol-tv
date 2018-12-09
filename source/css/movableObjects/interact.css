@@ -1,0 +1,79 @@
+*body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.interact {
+    top: 150px;
+    position: absolute;
+    left: 350px;
+    width: 300px;
+    height: 150px;
+    border-style: solid;
+}
+
+.HoverContent {
+    border: 3px solid lightblue;
+    border-width: 3px;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+    cursor: all-scroll;
+}
+
+.interactMovePoint {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: blue;
+}
+
+.TopLeft {
+    top: -6px;
+    left: -6px;
+    cursor: nwse-resize;
+}
+
+.TopRight {
+    top: -6px;
+    right: -6px;
+    cursor: nesw-resize;
+}
+
+.BottomLeft {
+    bottom: -6px;
+    left: -6px;
+    cursor: nesw-resize;
+}
+
+.BottomRight {
+    bottom: -6px;
+    right: -6px;
+    cursor: nwse-resize;
+}
+
+.Top {
+    top: -6px;
+    left: 100px;
+    cursor: ns-resize;
+}
+
+.Bottom {
+    bottom: -6px;
+    left: 100px;
+    cursor: ns-resize;
+}
+
+.Left {
+    top: 50px;
+    left: -6px;
+    cursor: ew-resize;
+}
+
+.Right {
+    top: 50px;
+    right: -6px;
+    cursor: ew-resize;
+}

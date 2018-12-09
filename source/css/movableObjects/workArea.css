@@ -1,0 +1,10 @@
+#WorkArea {
+    background-color: lightgrey;
+    position: relative;
+    border: 2px solid grey;
+}
+
+#resizingOBJ {
+    border: 3px solid lightblue;
+    position: absolute;
+}
