@@ -8,7 +8,7 @@ function showCardInformationPopup(cardName, element) {
             "name": cardName
         },
         success: function(responseText) {
-            var before = '<div class="popup">' +
+            var before = '<div class="popup" style="z-index: 3!important;">' +
                 '<div id="information-popup-content" class="popup-content popup-animate" >' +
                 '   <div class="popup-topSection">' +
                 '<span onclick="this.parentElement.parentElement.parentElement.style.display=' + "'" + 'none' + "'" + ';" class="popup-close" title="Close Modal">&times;</span>' +

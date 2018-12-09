@@ -1,11 +1,14 @@
-function handleCardClickEvent(event, listContainer, popupContainer) {
+function handleCardClickEvent(event, listContainer, popupContainer, importObj) {
+
     var name = event.target.parentElement.parentElement.parentElement.getElementsByClassName("current-cards-name")[0].innerHTML;
 
     if (event.target.matches(".button-information")) {
         showCardInformationPopup(name, popupContainer);
+        return true;
         console.log("Show information");
     } else if (event.target.matches(".button-edit")) {
         location.assign("edit/edit.php?e=" + name);
+        return true;
     } else if (event.target.matches(".button-remove")) {
         event.target.parentElement.parentElement.parentElement.remove();
         $.ajax({
@@ -20,8 +23,8 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
             error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
         });
 
-
         console.log("Show remove");
+        return true;
     } else if (event.target.matches(".button-preview")) {
         console.log("Show preview");
 
@@ -38,6 +41,7 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
         } else {
             location.assign("../../source/cards/" + name);
         }
+        return true;
 
     } else if (event.target.matches(".button-upvote")) {
         $.ajax({
@@ -50,24 +54,44 @@ function handleCardClickEvent(event, listContainer, popupContainer) {
                 "name": name,
             },
             success: function(responseText) {
-                $.ajax({
-                    method: "POST",
-                    url: cardDataFile,
-                    data: {
-                        "dir": "printcards",
-                        "ajax": true,
-                    },
-                    success: function(responseText) {
-                        listContainer.innerHTML = responseText;
+                if (importObj) {
+                    $.ajax({
+                        method: "POST",
+                        url: cardDataFile,
+                        data: {
+                            "dir": "printcardsforimport",
+                            "ajax": true,
+                        },
+                        success: function(responseText) {
+                            listContainer.innerHTML = responseText;
 
-                    },
-                    error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
+                        },
+                        error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
 
-                });
+                    });
+                } else {
+                    $.ajax({
+                        method: "POST",
+                        url: cardDataFile,
+                        data: {
+                            "dir": "printcards",
+                            "ajax": true,
+                        },
+                        success: function(responseText) {
+                            listContainer.innerHTML = responseText;
+
+                        },
+                        error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
+
+                    });
+                }
+
             },
             error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
         });
+        return true;
     } else {
-        return;
+        //Return false to indicate that no operations has been done, useful if other eventHandelers are being called
+        return false;
     }
 }
