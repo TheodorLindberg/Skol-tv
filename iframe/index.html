@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .cavnas {
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="frames">
+        <iframe src="./content/html.html" width="400" height="400" frameborder="0" id="iframe" style="resize: both;" class="canvas"></iframe>
+        <iframe src="./content/html.html" width="400" height="400" frameborder="0" id="iframe2" style="resize: both;" class="canvas"></iframe>
+    </div>
+
+    <button onclick="resize()"> Resize</button>
+
+
+</body>
+<script>
+    var frames = document.getElementById("frames");
+    frames.onmouseup = function(event) {
+        if (event.target.matches(".canvas")) {
+            var side = Math.min(parseInt(event.target.style.width), parseInt(event.target.style.height));
+            event.target.style.width = side + "px";
+            event.target.style.height = side + "px";
+            console.log(side);
+        }
+    }
+
+    var iframe = document.getElementById("iframe");
+
+    function resize() {
+        iframe.width = parseInt(iframe.width) - 50;
+        iframe.height = parseInt(iframe.height) - 50;
+    }
+</script>
+
+</html>

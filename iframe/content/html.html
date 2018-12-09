@@ -1,0 +1,26 @@
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    canvas {
+        border: red solid 3px;
+    }
+</style>
+
+<canvas id="canvas" width="700" height="700" style="background-color:#333">
+</canvas>
+
+<script src="js.js"></script>
+<script>
+    window.onload = function(event) {
+        resizeCanvas();
+    }
+    var canvas = document.getElementById("canvas");
+    window.onresize = function(event) {
+        console.log("resize");
+        resizeCanvas();
+    }
+    window.onclick = function() {}
+</script>
