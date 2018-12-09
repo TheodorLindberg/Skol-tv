@@ -18,7 +18,7 @@ Hello there! If you're reading this, it probably means you're in the wrong place
 
 7. Do CTRL + SHIFT + P and enter "git clone"
 
-8. Enter this link: "https://github.com/TheodorLindberg/Skol-tv.git"
+8. Enter this link: "https://github.com/TheodorLindberg/Skol-tv.git" or the latest git releas
 
 9. Select the htdocs or optional folder. You should now see the files in the explorer.
 
