@@ -1,9 +1,10 @@
 <?php
-$RootFolderPath = "../../../";
 if(session_status() != 2)
 {
     session_start();
 }
+
+$TO_HOME_DIR = "../../../";
 require __DIR__.'/../../source/database/connections/SimpleMySQLi.php';
 
 class CardData
@@ -112,9 +113,9 @@ class CardData
                     <div class="current-cards-content">
                         <p class="current-cards-description">'.$card['description'].'</p>
                         <div>
-                            <p class="current-cards-import button-information">Import</p>
+                            <p class="current-cards-change button-import">Import</p>
                             <p class="current-cards-change button-preview">Förhandsgranska</p>
-                            <p class="current-cards-information button-preview">Information</p>
+                            <p class="current-cards-change button-information">Information</p>
                             <p class="current-cards-change button-upvote">Upvote</p>
                         </div>
                     </div>
@@ -166,6 +167,17 @@ class CardData
         $this->recursiveRemove("../../".$path);
         echo $path;
 
+    }
+    public function getCardSaveLocation($name)
+    {
+        $path = $this->mysqli->query("SELECT folder_path FROM cards WHERE name = ?", [$name])->fetch("col");
+        if(is_dir("../../".$path))
+        {
+            echo $path;
+        }
+        else {
+            echo "missing";
+        }
     }
     public function deleteCardWithName($name)
     {
@@ -235,11 +247,13 @@ if(isset($_POST['dir'])){
         case "printcards":
             $state = $card->printCards();
             break;
+        case "printcardsforimport":
+            $state = $card->printCardsForImport();
+            break;
         case "printcardinformation":
             $state = $card->printCardInformation($_POST['name']);
             break;
         case "vote":
-        echo "hello";
             $state = $card->voteForCard($_POST['power'],$_POST['name']);
             break;
         case "delete":
@@ -248,18 +262,11 @@ if(isset($_POST['dir'])){
         case "printforimport":
             $state =$card->printCardsForImport();
             break;
-        case "printcardhtml":
-        
-            $state =$card->printCardInHtmlFormat($_POST['name'], $_POST['root']);
-            break;
-        case "printcardjavascript":
-            $state =$card->printCardJavascript($_POST['name'], $_POST['root']);
-            break;
-        case "printcardconfig":
-            $state =$card->printCardConfig($_POST['name'], $_POST['root']);
+        case "getcardsavelocation":
+            $state = $card->getCardSaveLocation($_POST['name']);
             break;
         case "updatefile":
-        var_dump($_POST['files']);
+            var_dump($_POST['files']);
             $state =$card->updateFiles($_POST['pathtocardsfolder'],$_POST['name'],$_POST['files']);
             break;
     }
@@ -273,3 +280,4 @@ if(isset($_POST['dir'])){
     }
     
 }
+

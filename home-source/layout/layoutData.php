@@ -112,6 +112,45 @@ class LayoutData
             echo "Det finns inga layouts i databasen";
         }
     }
+    public function printLayoutsForImport()
+    {
+        /* Template
+        <div class="current-layouts" style="display:none !important;">
+        <p class="current-layouts-name">Nyheter</p>
+        <div class="current-layouts-content">
+            <p class="current-layouts-description">En layout som visar nyheter, använder sig av databas table</p>
+            <div>
+                <p class="current-layouts-change">Information</p>
+                <p class="current-layouts-change">Ändra</p>
+                <p class="current-layouts-change">Ta bort</p>
+                <p class="current-layouts-change">Förhandsgranska</p>
+            </div>
+        </div>
+        </div>
+        */
+        $layouts=  $this->getLayouts();
+        if($layouts)
+        {
+            foreach($layouts as $layout)
+            {   
+            echo('<div class="current-layouts">
+                        <p class="current-layouts-name">'.$layout['name'].'</p>
+                        <div class="current-layouts-content">
+                            <p class="current-layouts-description">'.$layout['description'].'</p>
+                            <div>
+                            <p class="current-layouts-change button-import">Lägg till</p>
+                                <p class="current-layouts-change button-information">Information</p>
+                                <p class="current-layouts-change button-prelayout">Förhandsgranska</p>
+                                <p class="current-layouts-change button-upvote">Upvote</p>
+                            </div>
+                        </div>
+                    </div>');
+            }
+        }
+        else{
+            echo "Det finns inga layouts i databasen";
+        }
+    }
     public function createLayout($name, $description, $uid)
     {
         $arr = $this->mysqli->query("SELECT name FROM layouts WHERE name = ?", [$name])->fetch("assoc");
