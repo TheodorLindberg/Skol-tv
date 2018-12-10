@@ -11,8 +11,10 @@ if (!isset($_SESSION['u_id'])) {
 $TO_HOME_DIR = "../../../";
 
 //Lägger till databas anslutning
-require "../../../source/database/dbh-conn.php";
+require "../../../home-source/cards/cardEditInformation.php";
 
+$cardForEdit = new CardEditData();
+$cardForEdit->loadCard($cardName);
 ?>
 
 <!DOCTYPE html>
@@ -24,13 +26,49 @@ require "../../../source/database/dbh-conn.php";
     <link rel="stylesheet" href="../../../home-source/cards/css/editor.css">
     <title>Document</title>
 </head>
-<body>
+    <script>
+        window.onload = function(){
+            document.getElementById("card-name").value = "<?php echo $cardForEdit->getName(); ?>";
+            document.getElementById("card-description").value = <?php echo json_encode($cardForEdit->getDescription());?>;
 
+            var button = document.getElementById("card-state");
+            if(<?php echo $cardForEdit->getStatus();?>)
+            {
+                button.innerHTML = "Mark unready"
+                button.style.backgroundColor = "green";
+            }
+            else {
+                button.innerHTML = "Mark ready"
+                button.style.backgroundColor = "red";
+            }
+            document.getElementById("card-state-description").value = <?php echo json_encode($cardForEdit->getStatusInformation());?>;
+    
+        }
+    </script>
+<body>
     <?php include "../../header.php";  //lägger till headern?>
+    <div id="card-information-edit">
+        <div id="card-general-information-edit">
+            
+            <label for="card-name" class="card-information-edit-content">Name:</label>
+            <input name="card-name" type="text" id="card-name" class="card-information-edit-content">
+            
+            <label for="card-description" class="card-information-edit-content">Description:</label>
+            <textarea  id="card-description" cols="30" rows="5" class="card-information-edit-content"></textarea >
+            <br>
+            <br>
+            <button id="card-state" class="card-information-edit-content">Mark ready</button>
+            
+            <label for="card-state-description" class="card-information-edit-content">Status information:</label>
+            <textarea cols="30" rows="3" id ="card-state-description" class="card-information-edit-content"></textarea>
+        </div>
+        <div id="edit-file-layout">
+        </div>
+    </div>
     <p><?php echo $cardName?></p>
     <?php
     //Hämtar fil vägen till card:ets filer
-    $cardPath = $mysqli->query("SELECT folder_path FROM cards where name=?",[$cardName])->fetch("col");
+   /*$cardPath = $mysqli->query("SELECT folder_path FROM cards where name=?",[$cardName])->fetch("col");
     echo $cardPath;
 
     //Hämtar alla filer från $cardPath foldern
@@ -67,43 +105,37 @@ require "../../../source/database/dbh-conn.php";
     }
     else  {
         echo "No file found in project folder ".$cardName." Folder";
-    }
+    }*/
     ?>
     <button onclick='location.assign("../cards.php")'>Back</button>
     <button id="button-save">Save</button>
     <button id="button-save-exit">Save and exit</button>
 </body>
-<script >
+<script>
+    var cardName = "<?php echo $cardForEdit->getName()?>"
+    var cardDescription = <?php echo json_encode($cardForEdit->getDescription());?>;
+    var cardEditInformationPath = "../../../home-source/cards/cardEditInformation.php";
+    var cardStateInformation = <?php echo json_encode($cardForEdit->getStatusInformation());?>;
+    var state = <?php echo $cardForEdit->getStatus();?>;
+</script>
+<script src="../../../source/external/jquery-3.3.1.min.js"></script>
+<script src="../../../home-source/cards/js/editorController.js"></script>
+<script>
 
 function save()
 {
-    var files = [];
-
-    var editors = document.getElementsByClassName("editor-items");
-    console.log(editors);
-    for (var i = 0; i < editors.length; i++) {
-        var editor = editors[i].getElementsByTagName("textarea")[0];
-        console.log(editor);
-        var name = editors[i].getAttribute("file-name");
-        console.log(name);
-        files.push({"value": editor.value, "type":name});
-    }
-
-    console.log(files);
-
     $.ajax({
         method: "POST",
-        url: "../../../home-source/cards/cardData.php",
+        url: cardEditInformationPath,
         data: {
-            "dir": "updatefile",
-            "ajax": true,
-            "name": "<?php echo $filename?>",
-            "files": files,
-            "pathtocardsfolder": "<?php echo "../../".$cardPath?>"
+            "dir": "update" + "name",
+            "ajax": "true",
+            "name": "Klocka",
+            "newname": "hello"
         },
-        success: function(responseText) {
-        console.log(responseText);
-        alert("Saved");
+        success: function(responseText, s, t, l, p) {
+            console.log(responseText);
+
         },
         error: function(jqXHR, status, error) { handleError(jqXHR, status, error); },
 

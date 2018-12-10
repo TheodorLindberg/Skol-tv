@@ -1,10 +1,9 @@
 <?php 
-if(!isset($TO_HOME_DIR)) $TO_HOME_DIR = "../"; 
 
+if(!isset($TO_HOME_DIR)) $TO_HOME_DIR = "../"; 
 echo "<style> \n";
 require $TO_HOME_DIR."home-source/header/header.css";
 echo "</style> \n";
-
 
 ?>
 

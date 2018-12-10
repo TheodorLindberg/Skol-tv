@@ -3,8 +3,7 @@ if(session_status() != 2)
 {
     session_start();
 }
-
-$TO_HOME_DIR = "../../../";
+if(!isset($TO_HOME_DIR)) $TO_HOME_DIR = "../../../";
 require __DIR__.'/../../source/database/connections/SimpleMySQLi.php';
 
 class CardData
@@ -45,8 +44,10 @@ class CardData
         $cards=  $this->getCards();
         foreach($cards as $card)
         {   
+            $statusStyle = ($card['status'] ? "green" : "red");
            echo('<div class="current-cards">
-                    <p class="current-cards-name">'.$card['name'].'</p>
+                    <p style="float:left;"class="current-cards-name">'.$card['name'].'</p>
+                    <span style=";color:'.$statusStyle.';">&#x25A2;</span>
                     <div class="current-cards-content">
                         <p class="current-cards-description">'.$card['description'].'</p>
                         <div>
@@ -105,12 +106,14 @@ class CardData
     }
     public function printCardsForImport()
     {
-        $cards=  $this->getCards();
+        $cards = $this->mysqli->query("SELECT * FROM cards ORDER BY status DESC, upvote DESC")->fetchAll("assoc");
+
         foreach($cards as $card)
         {   
+            $statusStyle = ($card['status'] ? "green" : "red");
            echo('<div class="current-cards">
-                    <p class="current-cards-name">'.$card['name'].'</p>
-                    <div class="current-cards-content">
+                <p style="float:left;"class="current-cards-name">'.$card['name'].'</p>
+                <span style=";color:'.$statusStyle.';">&#x25A2;</span><div class="current-cards-content">
                         <p class="current-cards-description">'.$card['description'].'</p>
                         <div>
                             <p class="current-cards-change button-import">Import</p>
@@ -146,12 +149,16 @@ class CardData
     }
     public function printCardInformation($name)
     {
-        $card = $this->mysqli->query("SELECT description ,creatorID ,lastedit ,upvote ,created FROM cards WHERE name =?",[$name])->fetch("assoc");
+        $card = $this->mysqli->query("SELECT description ,creatorID ,status, status_info, lastedit ,upvote ,created FROM cards WHERE name =?",[$name])->fetch("assoc");
         $creator = $this->mysqli->query("SELECT user_first, user_last, user_uid from users where id = ?",[$_SESSION['u_id']])->fetch("assoc");
-
+        $status = ($card['status'] ? "Fungerande" : "Inte fungerande");
         echo ('<h1>Namn: '.$name.'</h1>
         <p><strong>Description: </strong>'.$card['description'].'</p>
         <p><strong>Röster: </strong>'.$card['upvote'].'</p>
+
+        <p><strong>Status: </strong>'.$status.'</p>
+        <p><strong>Statis information: </strong>'.$card['status_info'].'</p>
+
         <p><strong>Senast ändrar: </strong> '.$card['lastedit'].'</p>
         <p><strong>Skapades: </strong> '.$card['created'].'</p>
         <p><strong>Skaparens användarnamn: </strong>'.$creator['user_uid'].'</p>

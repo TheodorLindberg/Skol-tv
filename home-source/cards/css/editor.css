@@ -8,3 +8,18 @@
     flex-direction: column;
     width: 100%;
 }
+
+#card-information-edit {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: lightgrey solid 3px;
+}
+
+#card-general-information-edit {
+    margin: 10px;
+}
+
+.card-information-edit-content {
+    width: 100%;
+}
