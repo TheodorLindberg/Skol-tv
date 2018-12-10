@@ -56,7 +56,7 @@ $card = new CardData();
             använda ett eget sätt eller använda hemisdans sql database, då behöver du
             både kunna sql och php, samt få lite information om sidans database av mig(Theodor).
         </p>
-
+        
         <div id="create-card-popup" class="popup">
             <div class="create-card-content popup-content popup-animate" >
 

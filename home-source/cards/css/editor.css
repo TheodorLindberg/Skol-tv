@@ -23,3 +23,28 @@
 .card-information-edit-content {
     width: 100%;
 }
+
+#edit-file-layout {
+    margin: 10px;
+}
+
+.folder {
+    display: flex;
+    flex-direction: column;
+}
+
+.file {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}
+
+.folder-content {
+    margin-left: 8px;
+}
+
+.folder-name {
+    display: flex;
+    flex-direction: row;
+    justify-items: center;
+}

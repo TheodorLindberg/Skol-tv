@@ -47,7 +47,7 @@ $cardForEdit->loadCard($cardName);
     </script>
 <body>
     <?php include "../../header.php";  //lägger till headern?>
-    <div id="card-information-edit">
+    <div id="card-information-edit" style="background-color:grey;">
         <div id="card-general-information-edit">
             
             <label for="card-name" class="card-information-edit-content">Name:</label>
@@ -62,54 +62,18 @@ $cardForEdit->loadCard($cardName);
             <label for="card-state-description" class="card-information-edit-content">Status information:</label>
             <textarea cols="30" rows="3" id ="card-state-description" class="card-information-edit-content"></textarea>
         </div>
-        <div id="edit-file-layout">
+        <div id="edit-file-layout" >
+            <p>Projects file structure</p>
+            <div class="folder" id="root">
+
+            </div>
         </div>
     </div>
-    <p><?php echo $cardName?></p>
-    <?php
-    //Hämtar fil vägen till card:ets filer
-   /*$cardPath = $mysqli->query("SELECT folder_path FROM cards where name=?",[$cardName])->fetch("col");
-    echo $cardPath;
-
-    //Hämtar alla filer från $cardPath foldern
-
-    $files = glob(rtrim("../../../".$cardPath, "/").'/*');
-
-    //Kollar att $files är en array av filer samt att den inehåller fler än en fil
-    if(is_array($files) && count($files) > 0 )
-    {
-        
-        echo '<div class="editor" >'."\n";
-        //Går igenom varje fil
-        foreach($files as $file)
-        {
-            //hämtar filtypen och namnet
-            $filetype = substr($file, strrpos($file, ".") + 1); 
-            $filename = substr($file, strrpos($file, "/") + 1); 
-            echo '<div class="editor-items" file-name="'.$filename.'">'."\n";
     
-
-            echo($filename);
-            echo '<textarea>'."\n";
-            //Includara file, vilket kommer göra så att den printas till textarea
-            include($file);
-            echo '</textarea>'."\n";
-            echo '</div>'."\n";
-            
-        }
-        echo '</div>'."\n";
-    }  //Kollar om det finns ett directory 
-    else if(!is_dir("../../../".$cardPath)) 
-    {
-        echo "No project folder for ".$cardName." found";
-    }
-    else  {
-        echo "No file found in project folder ".$cardName." Folder";
-    }*/
-    ?>
     <button onclick='location.assign("../cards.php")'>Back</button>
     <button id="button-save">Save</button>
     <button id="button-save-exit">Save and exit</button>
+
 </body>
 <script>
     var cardName = "<?php echo $cardForEdit->getName()?>"
@@ -120,6 +84,7 @@ $cardForEdit->loadCard($cardName);
 </script>
 <script src="../../../source/external/jquery-3.3.1.min.js"></script>
 <script src="../../../home-source/cards/js/editorController.js"></script>
+<script src="../../../home-source/cards/js/filesystem.js"></script>
 <script>
 
 function save()
