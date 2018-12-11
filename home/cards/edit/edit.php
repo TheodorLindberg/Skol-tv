@@ -42,12 +42,11 @@ $cardForEdit->loadCard($cardName);
                 button.style.backgroundColor = "red";
             }
             document.getElementById("card-state-description").value = <?php echo json_encode($cardForEdit->getStatusInformation());?>;
-    
         }
     </script>
 <body>
     <?php include "../../header.php";  //lägger till headern?>
-    <div id="card-information-edit" style="background-color:grey;">
+    <div id="card-information-edit">
         <div id="card-general-information-edit">
             
             <label for="card-name" class="card-information-edit-content">Name:</label>
