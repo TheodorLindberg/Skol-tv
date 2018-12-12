@@ -1,0 +1,64 @@
+.contextmenu {
+    position: fixed;
+    z-index: 9999;
+    /* Most times is 2000 used as middle */
+    visibility: hidden;
+    opacity: 0;
+    padding: 0px;
+    font-family: sans-serif;
+    font-size: 11px;
+    background: #fff;
+    color: #555;
+    border: 1px solid #C6C6C6;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+    -webkit-box-shadow: 2px 2px 2px 0px rgba(143, 144, 145, 1);
+    -moz-box-shadow: 2px 2px 2px 0px rgba(143, 144, 145, 1);
+    box-shadow: 2px 2px 2px 0px rgba(143, 144, 145, 1);
+}
+
+.contextmenu a {
+    display: flex;
+    color: #555;
+    text-decoration: none;
+    width: 250px;
+    position: relative;
+    padding: 6px 8px 6px 10px;
+    justify-content: space-between;
+}
+
+.contextmenu a span {
+    color: #BCB1B3;
+    float: right;
+}
+
+.contextmenu a:hover {
+    color: #fff;
+    background: #3879D9;
+}
+
+.contextmenue-divider {
+    margin-top: 4px;
+    margin-bottom: 4px;
+    border-bottom: lightgray solid 2px;
+}
+
+.filesystem-held {
+    border: solid 10px black;
+    background-color: black;
+}
+
+.filesystem-holder {
+    height: 110px;
+    width: 110px;
+    margin: 10px;
+    border: solid 5px black;
+    background-color: white;
+    display: inline-block;
+}
+
+.filesystem-hovered {
+    border: dotted 5px black;
+    background-color: rgba(255, 255, 255, 0.2);
+}

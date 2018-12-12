@@ -24,6 +24,7 @@ $cardForEdit->loadCard($cardName);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="../../../home-source/cards/css/editor.css">
+    <link rel="stylesheet" href="../../../home-source/cards/css/contextmenu.css">
     <title>Document</title>
 </head>
     <script>
@@ -61,18 +62,49 @@ $cardForEdit->loadCard($cardName);
             <label for="card-state-description" class="card-information-edit-content">Status information:</label>
             <textarea cols="30" rows="3" id ="card-state-description" class="card-information-edit-content"></textarea>
         </div>
+        <div class="contextmenu" id="file-editor-contexmenu"> 
+            <a class="new-file">
+                <p> Add file </p><span>Ctrl + n</span>
+            </a>
+            <a class="new-folder-file">
+                <p> Add folder </p><span>Ctrl + Shift + n</span>
+            </a>
+            <a class="delete-file">
+                <p> Delete file </p><span>del , backspace</span>
+            </a>
+            <a class="open-file">
+                <p> Open file </p><span>Ctrl + o</span>
+            </a>
+            <a class="open-window-file">
+                <p> Open in new page </p><span>Ctrl + Shift + o</span>
+            </a>
+            <a class="rename-file">
+                <p> Rename file </p><span>Ctrl + r</span>
+            </a>
+            <div class="contextmenue-divider">
+            </div>
+            <a class="copy-file">
+                <p> Copy file </p><span>Ctrl + c</span>
+            </a>
+            <a class="paste-file">
+                <p> Paste file </p><span>Ctrl + v</span>
+            </a>
+            <a class="clone-file">
+                <p> Clone file </p><span>Ctrl + x</span>
+            </a>
+            <a class="copy-path-file">
+                <p> Copy path </p><span>Ctrl + g</span>
+            </a>
+        </div>
         <div id="edit-file-layout" >
             <p>Projects file structure</p>
             <div class="folder" id="root">
-
             </div>
         </div>
     </div>
-    
     <button onclick='location.assign("../cards.php")'>Back</button>
     <button id="button-save">Save</button>
     <button id="button-save-exit">Save and exit</button>
-
 </body>
 <script>
     var cardName = "<?php echo $cardForEdit->getName()?>"
@@ -83,9 +115,10 @@ $cardForEdit->loadCard($cardName);
 </script>
 <script src="../../../source/external/jquery-3.3.1.min.js"></script>
 <script src="../../../home-source/cards/js/editorController.js"></script>
+<script src="../../../home-source/cards/js/filesystemEvents.js"></script>
 <script src="../../../home-source/cards/js/filesystem.js"></script>
+<script src="../../../home-source/cards/js/contextmenu.js"></script>
 <script>
-
 function save()
 {
     $.ajax({
@@ -109,9 +142,11 @@ function save()
 $("#button-save").click(function(event){
     save();
 });
+
 $("#button-save-exit").click(function(event){
     save();
     location.assign("../cards.php");
 });
+
 </script>
 </html>
