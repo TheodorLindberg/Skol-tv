@@ -37,7 +37,9 @@ function filesystemEventsinit(rootDir, fileSystem) {
         }
 
     });
-    rootDir.addEventListener("drop", function(event) {}, false);
+    rootDir.addEventListener("drop", function(event) {
+        markedFolder.classList.remove("filesystem-hovered");
+    }, false);
 }
 
 

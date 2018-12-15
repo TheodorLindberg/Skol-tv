@@ -29,7 +29,7 @@ function getDefaultConfig() {
 
 function GetNewObj() {
     var elem = $('<div class="interact">' +
-        '<div class="interact-element-content"></div>' +
+        '<div class="interact-element-content" bannerid="yyy"></div>' +
         '<div class="HoverContent">' +
         '<div class="TopLeft interactMovePoint"></div>' +
         '<div class="TopRight interactMovePoint"></div>' +

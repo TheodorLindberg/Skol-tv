@@ -1,0 +1,124 @@
+.editor {
+    display: flex;
+    margin-top: 15px;
+}
+
+.editor-items {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+#card-information-edit {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    border: lightgrey solid 3px;
+}
+
+#card-general-information-edit {
+    margin: 10px;
+}
+
+.card-information-edit-content {
+    width: 100%;
+}
+
+#edit-file-layout {
+    margin: 10px;
+}
+
+#card-information-edit {
+    background-color: #4d4d4d;
+}
+
+.file-wrapper {}
+
+.file-wrapper:hover {
+    background-color: #666666;
+}
+
+.file-name-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.name-input {
+    width: 100%;
+    border: none;
+    background-color: transparent;
+    padding: auto;
+    padding: 3px;
+}
+
+.name-input:disabled {
+    background-color: transparent;
+    color: black;
+}
+
+.editor-body {
+    display: flex;
+}
+
+.text-editor {
+    width: 100%;
+    background-color: #4d4d4d;
+    border-bottom: lightgrey solid 3px;
+}
+
+.text-editor-header {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    margin-left: 10px;
+    margin-top: 3px;
+}
+
+.text-editor-header-item {
+    background-color: grey;
+    border: black solid 1px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+}
+
+.text-editor-header-item p {
+    text-align: center;
+    padding: 3px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.text-editor-header-item span {
+    text-align: center;
+    padding: 3px;
+    color: grey;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.text-editor-header-item:hover>span {
+    color: black;
+    cursor: pointer;
+}
+
+.text-editor-header-hover {
+    background-color: lightgray;
+}
+
+.text-editor-editzone {
+    width: 100%;
+    height: 100%;
+}
+
+.text-editor-textarea {
+    margin-left: 10px;
+    margin-top: 1px;
+    width: 98%;
+    height: 90%;
+    border: none;
+    background-color: lightgrey;
+}

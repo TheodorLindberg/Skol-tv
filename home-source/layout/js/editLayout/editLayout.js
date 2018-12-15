@@ -20,6 +20,12 @@ document.getElementsByClassName("popup-container")[0].onclick = function(event) 
                     if (responseText != "missing") {
 
                         object.innerHTML = '<iframe src="' + root + responseText + '" frameborder="0" class="card-iframe"></iframe>';
+                        console.log(object.getElementsByTagName("iframe")[0]);
+                        object.getElementsByTagName("iframe")[0].addEventListener("click", function(event) {
+                            console.log(event);
+                            alert("hello");
+                        });
+                        initthignydgff();
                     }
 
 
@@ -31,3 +37,16 @@ document.getElementsByClassName("popup-container")[0].onclick = function(event) 
         console.log("other");
     }
 }
+
+function initthignydgff() {
+    var overiFrame = -1;
+    $('iframe').click(function() {
+        overiFrame = $(this).closest('.interact-element-content').attr('bannerid');
+    }, function() {
+        overiFrame = -1
+    });
+    $(window).blur(function() {
+        if (overiFrame != -1)
+            console.log(overiFrame);
+    });
+};

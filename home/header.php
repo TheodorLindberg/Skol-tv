@@ -14,11 +14,11 @@ echo "</style> \n";
         <a href="#" id="name">Skol TV</a>
     </li>
     <li class="divider"></li>
-    <li class="updateModel">
-        <a href="<?php echo $TO_HOME_DIR?>home/layout/layout.php">Skapa/Ändra layout</a>
-    </li>
     <li class="develope">
-        <a href="<?php echo $TO_HOME_DIR?>home/cards/cards.php">Skapa/Ändra card</a>
+        <a href="<?php echo $TO_HOME_DIR?>home/cards/cards.php">Cards</a>
+    </li>
+    <li class="updateModel">
+        <a href="<?php echo $TO_HOME_DIR?>home/layout/layout.php">Layouts</a>
     </li>
     <li class="profile">
         <?php echo '<a class="profile-name" href="#Profile" >' .$_SESSION['u_uid']. '</a>'; ?>

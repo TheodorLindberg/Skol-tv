@@ -23,8 +23,8 @@ $cardForEdit->loadCard($cardName);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="../../../home-source/cards/css/editor.css">
-    <link rel="stylesheet" href="../../../home-source/cards/css/contextmenu.css">
+    <link rel="stylesheet" href="../../../home-source/cards/css/filesystem/editor.css">
+    <link rel="stylesheet" href="../../../home-source/cards/css/filesystem/contextmenu.css">
     <title>Document</title>
 </head>
     <script>
@@ -47,6 +47,7 @@ $cardForEdit->loadCard($cardName);
     </script>
 <body>
     <?php include "../../header.php";  //lägger till headern?>
+    <div class="editor-body">
     <div id="card-information-edit">
         <div id="card-general-information-edit">
             
@@ -102,6 +103,22 @@ $cardForEdit->loadCard($cardName);
             </div>
         </div>
     </div>
+    <div class="text-editor">
+        <div class="text-editor-header">
+            <div class="text-editor-header-item" disabled="true">
+                <p>Filename:</p>
+                <span onclick="alert('close');">&times;</span>
+            </div>
+            <div class="text-editor-header-item">
+                <p>long file name this is long:</p>
+                <span onclick="alert('close');">&times;</span>
+            </div>
+        </div>
+        <div class="text-editor-editzone">
+            <textarea name="" class="text-editor-textarea"id="" cols="30" rows="10"></textarea>
+        </div>
+    </div>
+    </div>
     <button onclick='location.assign("../cards.php")'>Back</button>
     <button id="button-save">Save</button>
     <button id="button-save-exit">Save and exit</button>
@@ -114,10 +131,11 @@ $cardForEdit->loadCard($cardName);
     var state = <?php echo $cardForEdit->getStatus();?>;
 </script>
 <script src="../../../source/external/jquery-3.3.1.min.js"></script>
-<script src="../../../home-source/cards/js/editorController.js"></script>
-<script src="../../../home-source/cards/js/filesystemEvents.js"></script>
-<script src="../../../home-source/cards/js/filesystem.js"></script>
-<script src="../../../home-source/cards/js/contextmenu.js"></script>
+<script src="../../../home-source/cards/js/filesystem/editorController.js"></script>
+<script src="../../../home-source/cards/js/filesystem/filesystemEvents.js"></script>
+<script src="../../../home-source/cards/js/filesystem/filesystem.js"></script>
+<script src="../../../home-source/cards/js/filesystem/contextmenu.js"></script>
+<script src="../../../home-source/cards/js/filesystem/header.js"></script>
 <script>
 function save()
 {
