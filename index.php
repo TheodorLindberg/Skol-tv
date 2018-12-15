@@ -101,3 +101,7 @@ if(isset($_SESSION['u_id'])){
 </script>
 
 </html>
+
+
+
+INDEX PHP
