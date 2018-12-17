@@ -109,7 +109,7 @@ $cardForEdit->loadCard($cardName);
                 <p>Filename:</p>
                 <span onclick="alert('close');">&times;</span>
             </div>
-            <div class="text-editor-header-item">
+            <div class="text-editor-header-item text-editor-header-hover">
                 <p>long file name this is long:</p>
                 <span onclick="alert('close');">&times;</span>
             </div>

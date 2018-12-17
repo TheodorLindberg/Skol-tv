@@ -1,0 +1,29 @@
+.current-cards {}
+
+.current-cards-name {
+    color: rgba(30, 153, 255, 1);
+    font-size: 20px;
+}
+
+.current-cards-content {
+    margin-left: 10px;
+}
+
+.current-cards-description {
+    padding-top: 5px;
+    font-size: 15px;
+    color: rgb(102, 224, 255);
+}
+
+.current-cards-content div {
+    display: flex;
+}
+
+.current-cards-content div p {
+    margin-top: 5px;
+    font-size: 10px;
+    color: rgb(0, 224, 255);
+    margin-right: 15px;
+    height: fit-content;
+    cursor: pointer;
+}

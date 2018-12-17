@@ -18,8 +18,6 @@ require "../../../home-source/cards/cardData.php";
 </head>
 
 <body>
-
-
     <ul class="menu-general menu">
         <img src="../../../source/home/layout/edit/logo.png" alt="" id="menu-general-logo">
         <div class="menu-general-dropdown_naming">
@@ -107,11 +105,14 @@ require "../../../home-source/cards/cardData.php";
             <div class="tooltip">
                 <input id="borderRadius" type="text" /><span class="tooltiptext">Border radius</span></div>
             <div class="tooltip"><button id="add-layout" onclick="document.getElementById('import-layout-popup').style.display='block'">Lägg till en layout</button> <span class="tooltiptext">Add a layout to the object</span></div>
-            
-           
         </div>
     </div>
+
+
+    <div id="WorkArea">
+    </div>
     
+
     <div id="card-information-popup-container">
     </div>
 
@@ -140,19 +141,22 @@ require "../../../home-source/cards/cardData.php";
         Här kommer du kunna skapa ditt egna tema
     </div>
 
-    <div id="WorkArea">
-    </div>
-    <div id="resizingOBJ"></div>
+    
+    <div id="resizingOBJ" class="editzone-element"></div>
 
 </body>
+
 <script type="text/javascript" src="../../../source/external/jquery-3.3.1.min.js"></script>
-<script src="../../../source/js/movableObjects/movableObject.js"></script>
-<script src="../../../source/js/movableObjects/movableObjectConfig.js"></script>
-<script src="../../../source/js/movableObjects/movableObjectsContaniner.js"></script>
-<script src="../../../source/js/movableObjects/editZone/editzone.js"></script>
-<script src="../../../source/js/cardoperations/basicCardOperations.js"></script>
-<script src="../../../source/js/cardoperations/cardOperationEventHandeler.js"></script>
-<script src="../../../home-source/layout/js/editLayout/editLayout.js"></script>
+<script src="../../../source/js/editzone/movableObj/movableObjInterface.js"></script>
+<script src="../../../source/js/editzone/elements/normalElement.js"></script>
+<script src="../../../source/js/editzone/creationHandelers/defaultCreationHandeler.js"></script>
+<script src="../../../source/js/editzone/editZoneController.js"></script>
+<script src="../../../source/js/editzone/editZoneAreaEvents.js"></script>
+<script src="../../../source/js/editzone/editZoneArea.js"></script>
+<script src="../../../home-source/layout/js/editZoneController.js"></script>
+
+
+
 <script>
     var layoutDataFile = "../../../home-source/layout/layoutData.php";
     var cardDataFile = "../../../home-source/cards/cardData.php";

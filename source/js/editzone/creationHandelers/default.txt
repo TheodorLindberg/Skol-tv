@@ -1,0 +1,23 @@
+//Clone this when creating a new creationHandeler
+
+function DefaultCreationHandeler() {
+    //This needs to be set to true
+    this.IsCreationHandeler = true;
+
+    this.getCreationHandelerType = function(){
+        return "";
+    }
+    //Function to handle events
+    //Event, the event
+    //isInside, true if event have happend inside the editCanvas
+    //pushList, the list all elements inside editCanvas is stored in, used to push a created element
+    this.onKeyDown = function(event, isInside) {
+
+    }
+    this.onMouseMove = function(event, isInside) {
+
+    }
+    this.onKeyUp = function(event, isInside, pushList) {
+
+    }
+}
