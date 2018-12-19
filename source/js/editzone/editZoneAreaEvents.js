@@ -16,7 +16,9 @@ function EditZoneMouseDownEvent(event) {
             editZone.activeCard.activate(false);
         }
         card.activate(true);
+        editZone.moveToTopHierarchy(card.getElement());
         editZone.activeCard = card;
+        console.log(card.getGlobalBounds());
     } else if (editZone.activeCard) {
         editZone.activeCard.activate(false);
     }
@@ -75,6 +77,24 @@ function EditZoneMouseUpEvent(event) {
                     element.onMouseUp(event);
                 }
             });
+    }
+}
+
+function EditZoneKeyPressEvent(event) {
+
+    var editZone = window.editZone;
+    switch (event.keyCode) {
+        case 8:
+            if (editZone.activeFocusOnCard) {
+                editZone.activeCard.delete();
+                for (var i = 0; i < editZone.elementList.length; i++) {
+                    if (editZone.elementList[i] == editZone.activeCard) {
+                        editZone.elementList.splice(i, 1);
+                    }
+                }
+            }
+            break;
+
     }
 }
 

@@ -27,8 +27,12 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
     this.marginConfig = marginConfig;
     this.margin = marginConfig.margin;
 
+
     this.elementList = [];
     this.activeCard = null;
+    this.cardHierarchy = [];
+    this.activeFocusOnCard = true;
+    this.topHierarchyLevel = 1;
 
     this.state = STATE_UNINITIALIZED;
     this.creationElementHandeler = null
@@ -46,7 +50,21 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
         window.addEventListener("mousedown", EditZoneMouseDownEvent, false);
         window.addEventListener("mousemove", EditZoneMouseMoveEvent, false);
         window.addEventListener("mouseup", EditZoneMouseUpEvent, false);
+        window.addEventListener("keydown", EditZoneKeyPressEvent, false);
         return true;
+    };
+    this.moveToTopHierarchy = function(element) {
+        element.style.zIndex = this.topHierarchyLevel;
+        this.topHierarchyLevel++;
+    }
+    this.addElement = function(element) {
+
+        this.elementList.push(element);
+
+        this.cardHierarchy.push(element);
+
+        this.moveToTopHierarchy(element.getElement());
+
     };
     //Updates the current editzone to count in page resizing
     //Returns true if success, fale if failed, like the edit zone can't fit on the viewport
@@ -101,4 +119,15 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
         }
 
     }
+};
+
+function array_move(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
+        }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
 };

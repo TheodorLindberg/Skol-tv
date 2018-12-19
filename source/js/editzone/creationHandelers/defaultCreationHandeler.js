@@ -72,8 +72,7 @@ function DefaultCreationHandeler(editZone, displayElement) {
         };
         var newElement = new NormalElement(this.editZone, location);
 
-        this.editZone.elementList.push(newElement);
-
+        this.editZone.addElement(newElement);
         this.editZone.state = STATE_READY;
     }
 }

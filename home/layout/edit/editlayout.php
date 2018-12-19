@@ -142,7 +142,7 @@ require "../../../home-source/cards/cardData.php";
     </div>
 
     
-    <div id="resizingOBJ" class="editzone-element"></div>
+    <div id="resizingOBJ" style="z-index: 1000000" class="editzone-element"></div>
 
 </body>
 

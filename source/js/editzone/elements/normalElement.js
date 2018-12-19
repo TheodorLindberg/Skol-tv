@@ -12,11 +12,17 @@ function NormalElement(editZone, location) {
     this.controller.init();
     this.element.card = this;
 
+    this.delete = function() {
+        this.controller.cleanUp();
+    }
     this.setPosition = function(x, y) {
 
     }
     this.getGlobalBounds = function() {
-
+        return this.controller.getGlobalBounds();
+    }
+    this.getElement = function() {
+        return this.element;
     }
     this.scale = function(x, y) {
 

@@ -71,10 +71,22 @@ function MovableObj(HTMLelement, obj, config, location) {
         this.element.getElementsByClassName("Left")[0].style.top = top + "px";
         this.element.getElementsByClassName("Right")[0].style.top = top + "px";
     }
+    this.cleanUp = function() {
+        this.element.remove();
+    }
     this.activate = function(show) {
         var display = (show ? "block" : "none");
         this.state = (show ? MOVABLEOBJ_STATE_ACTIVE : MOVABLEOBJ_STATE_DISPLAY);
         this.element.getElementsByClassName("HoverContent")[0].style.display = display;
+    }
+    this.getGlobalBounds = function() {
+        var top = parseInt(this.location.top); //- parseInt(getComputedStyle(this.element, null).getPropertyValue('border-top-width'), 10);
+        var left = parseInt(this.location.top); //- parseInt(getComputedStyle(this.element, null).getPropertyValue('border-left-width'), 10);
+
+        var bottom = top + this.element.offsetHeight;
+        var right = left + this.element.offsetWidth;
+
+        return { "top": top, "left": left, "bottom": bottom, "right": right };
     }
     this.shouldUpdate = function() {
         return this.state == MOVABLEOBJ_STATE_ACTIVE;
