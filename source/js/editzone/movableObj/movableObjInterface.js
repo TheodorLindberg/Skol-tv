@@ -17,7 +17,7 @@ function MovableObj(HTMLelement, obj, config, location) {
     this.dragPoints = { "left": false, "right": false, "top": false, "bottom": false };
     this.lastX = 0;
     this.lastY = 0;
-
+    this.movmentCollisionController = null;
     this.state = MOVABLEOBJ_STATE_UNINITIALIZED;
 
     this.resizing = false;
@@ -25,6 +25,9 @@ function MovableObj(HTMLelement, obj, config, location) {
 
     this.init = function() {
         this.state = MOVABLEOBJ_STATE_DISPLAY;
+
+        this.movmentCollisionController = new DefaultMovmentCollisionController(this.obj.editZone, this.obj);
+
         this.element.movableObj = this;
         this.element.addEventListener("mousedown", MovableObjMouseDown, false);
 
@@ -81,7 +84,7 @@ function MovableObj(HTMLelement, obj, config, location) {
     }
     this.getGlobalBounds = function() {
         var top = parseInt(this.location.top); //- parseInt(getComputedStyle(this.element, null).getPropertyValue('border-top-width'), 10);
-        var left = parseInt(this.location.top); //- parseInt(getComputedStyle(this.element, null).getPropertyValue('border-left-width'), 10);
+        var left = parseInt(this.location.left); //- parseInt(getComputedStyle(this.element, null).getPropertyValue('border-left-width'), 10);
 
         var bottom = top + this.element.offsetHeight;
         var right = left + this.element.offsetWidth;
@@ -165,6 +168,15 @@ function MovableObjMouseMove(event, movableObj) {
         movableObj.location.bottom += velY;
         movableObj.location.top += velY;
 
+        var newLocation = movableObj.movmentCollisionController.handleMovment(false);
+
+        var borderWidth = (movableObj.element.offsetWidth - movableObj.element.clientWidth);
+
+        movableObj.location.left = newLocation.left;
+        movableObj.location.right = newLocation.right - borderWidth;
+        movableObj.location.top = newLocation.top;
+        movableObj.location.bottom = newLocation.bottom - borderWidth;
+
         movableObj.updateElement();
     } else if (movableObj.resizing == true) {
         var dragPoints = movableObj.dragPoints;
@@ -179,6 +191,9 @@ function MovableObjMouseMove(event, movableObj) {
 
         }
         movableObj.location = location;
+
+        movableObj.location = movableObj.movmentCollisionController.handleMovment(false, dragPoints.left, dragPoints.right, dragPoints.top, dragPoints.bottom);
+
         movableObj.updateElement();
     }
 }

@@ -115,6 +115,7 @@ $card = new CardData();
 
 </div>
 </body>
+<script src="../../source/js/editzone/movmentCollision/movmentCollisionController.js"></script>
 <script src="../../source/external/jquery-3.3.1.min.js"></script>
 <script src="../../home-source/cards/js/createCard.js"></script>
 <script src="../../source/js/cardoperations/basicCardOperations.js"></script>

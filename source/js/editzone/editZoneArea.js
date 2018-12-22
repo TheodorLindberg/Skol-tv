@@ -27,7 +27,6 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
     this.marginConfig = marginConfig;
     this.margin = marginConfig.margin;
 
-
     this.elementList = [];
     this.activeCard = null;
     this.cardHierarchy = [];
@@ -43,7 +42,6 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
         window.editZone = this;
 
         this.state = STATE_READY;
-
         this.updateEditZone();
 
         window.addEventListener("resize", EditZoneResizeEvent, false);
@@ -53,6 +51,9 @@ function EditZone(editZoneCanvas, ratio, marginConfig) {
         window.addEventListener("keydown", EditZoneKeyPressEvent, false);
         return true;
     };
+    this.getLocalBounds = function() {
+        return { "top": 0, "left": 0, "bottom": this.editZoneCanvas.clientHeight, "right": this.editZoneCanvas.clientWidth };
+    }
     this.moveToTopHierarchy = function(element) {
         element.style.zIndex = this.topHierarchyLevel;
         this.topHierarchyLevel++;

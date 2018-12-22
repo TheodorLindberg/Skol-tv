@@ -147,6 +147,8 @@ require "../../../home-source/cards/cardData.php";
 </body>
 
 <script type="text/javascript" src="../../../source/external/jquery-3.3.1.min.js"></script>
+
+<script src="../../../source/js/editzone/movmentCollision/movmentCollisionController.js"></script>
 <script src="../../../source/js/editzone/movableObj/movableObjInterface.js"></script>
 <script src="../../../source/js/editzone/elements/normalElement.js"></script>
 <script src="../../../source/js/editzone/creationHandelers/defaultCreationHandeler.js"></script>

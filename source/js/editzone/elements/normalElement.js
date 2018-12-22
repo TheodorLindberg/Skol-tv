@@ -15,9 +15,7 @@ function NormalElement(editZone, location) {
     this.delete = function() {
         this.controller.cleanUp();
     }
-    this.setPosition = function(x, y) {
 
-    }
     this.getGlobalBounds = function() {
         return this.controller.getGlobalBounds();
     }
